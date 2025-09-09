@@ -23,6 +23,7 @@ return new class extends Migration
             $table->json('custom_fields')->nullable();
             $table->string(config('filament-edit-profile.locale_column', 'locale'))->nullable();
             $table->string(config('filament-edit-profile.theme_color_column', 'theme_color'))->nullable();
+            $table->foreignId('current_team_id')->nullable();
             $table->timestamps();
         });
 

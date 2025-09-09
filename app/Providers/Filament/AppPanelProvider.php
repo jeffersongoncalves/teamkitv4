@@ -3,8 +3,13 @@
 namespace App\Providers\Filament;
 
 use App\Filament\App\Pages\Auth\Login;
+use App\Filament\App\Pages\Tenancy\EditTeamProfile;
+use App\Filament\App\Pages\Tenancy\RegisterTeam;
+use App\Http\Middleware\ApplyTenantScopes;
+use App\Models\Team;
 use Filament\Actions\Action;
 use Filament\Enums\ThemeMode;
+use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -90,12 +95,20 @@ class AppPanelProvider extends PanelProvider
                 'profile' => Action::make('profile')
                     ->label(fn (): string => __('My Profile'))
                     ->url(fn (): string => EditProfilePage::getUrl())
-                    ->icon('heroicon-m-user-circle'),
+                    ->icon('heroicon-m-user-circle')
+                    ->visible(fn () => Filament::getTenant() !== null),
             ])
             ->unsavedChangesAlerts()
             ->passwordReset()
             ->profile()
             ->databaseNotifications()
-            ->databaseNotificationsPolling('30s');
+            ->databaseNotificationsPolling('30s')
+            ->tenant(Team::class)
+            ->tenantRoutePrefix('team')
+            ->tenantRegistration(RegisterTeam::class)
+            ->tenantProfile(EditTeamProfile::class)
+            ->tenantMiddleware([
+                ApplyTenantScopes::class,
+            ], isPersistent: true);
     }
 }
