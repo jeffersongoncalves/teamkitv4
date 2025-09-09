@@ -19,6 +19,7 @@ web applications with a ready-to-use multi-panel structure.
     - Admin Panel (`/admin`) - For system administrators
     - App Panel (`/app`) - For authenticated application users
     - Public Panel (frontend interface) - For visitors
+- **Teams (Multitenancy)** - Team management with registration, profile, and team switching directly in the App panel
 - **Environment Configuration** - Centralized configuration through the `config/teamkit.php` file
 
 ## System Requirements
@@ -145,6 +146,61 @@ TeamKit comes pre-configured with a custom authentication system that supports d
 - `Admin` - For administrative panel access
 - `User` - For application panel access
 
+## Teams – Multitenancy in the App Panel
+
+Teamkit includes native support for Teams (multitenancy) in the application panel (`/app`). This allows you to isolate data by team and provide a multi‑company/multi‑project experience.
+
+Key points:
+- Team model: `App\Models\Team` with fields `user_id` (owner), `name`, and `personal_team`.
+- Current user and current team: the user has `current_team_id` and helper methods for team management.
+- Tenancy in Filament: the App panel is configured with tenant `Team::class`, tenant route prefix `team`, a team registration page, and a team profile page.
+
+URLs and navigation:
+- App panel: `/app`
+- Team registration: `/app/team/register` (also accessible via the user menu under Tenancy)
+- Team profile: accessible from the Tenancy menu when a team is selected (e.g., `/app/team/{id}/profile` – managed by Filament)
+- Team switcher: appears at the top of the panel when the user belongs to 2+ teams.
+
+Creating and managing teams:
+- Register a team: at `/app/team/register`, enter the team name. The authenticated user becomes the team owner (`user_id`).
+- Edit team profile: via the “Team profile” page, allowing you to change the team `name`.
+- Switch teams: use the switcher at the top of Filament. Programmatically: `$user->switchTeam($team)`.
+
+User ↔ team association:
+- Team owner: the creator is the owner (field `user_id`).
+- Members: the many‑to‑many relationship `User::teams()`/`Team::users()` uses the pivot represented by `App\Models\Membership`.
+- Access rules: `User::canAccessTenant($tenant)` validates whether the user belongs to the team (owner or member). The `User::getTenants()` method returns the list for the switcher.
+
+Team‑scoped data:
+- Middleware: `App\Http\Middleware\ApplyTenantScopes` is prepared for you to apply global scopes to your models, for example:
+  ```php
+  // Example (uncomment and adapt):
+  // SomeModel::addGlobalScope(
+  //    fn (Builder $query) => $query->whereBelongsTo(Filament::getTenant()),
+  // );
+  ```
+- Adapt your Resources/queries to always consider the current tenant when applicable.
+
+Relevant migrations:
+- `database/migrations/0001_01_01_000005_create_teams_table.php`
+    - Creates the `teams` table with: `id`, `user_id` (indexed), `name`, and `personal_team` (boolean), plus timestamps.
+
+Filament pages related to Teams:
+- Registration: `App\Filament\App\Pages\Tenancy\RegisterTeam` (uses `Filament\Pages\Tenancy\RegisterTenant`).
+- Profile: `App\Filament\App\Pages\Tenancy\EditTeamProfile` (uses `Filament\Pages\Tenancy\EditTenantProfile`).
+
+App panel configuration (summary):
+- `App\Providers\Filament\AppPanelProvider`
+    - `->tenant(Team::class)`
+    - `->tenantRoutePrefix('team')`
+    - `->tenantRegistration(RegisterTeam::class)`
+    - `->tenantProfile(EditTeamProfile::class)`
+    - `->tenantMiddleware([ApplyTenantScopes::class], isPersistent: true)`
+
+Tips:
+- When creating new Models/Resources that should be isolated by team, remember to relate them to `Team` and apply the scope in the middleware or in your queries.
+- If you need to define a default team, `User::currentTeam` is resolved automatically if `current_team_id` is empty (it falls back to the personal team if it exists).
+
 ## Development
 
 ``` bash
@@ -189,7 +245,7 @@ This project already comes with the Filament Edit Profile plugin integrated for 
 
 - Routes (defaults in this project):
   - Admin: /admin/my-profile
-  - App: /app/my-profile
+  - App: /app/team/{id}/my-profile
 - Navigation: by default, the page does not appear in the menu (shouldRegisterNavigation(false)). If you want to show it in the sidebar menu, change it to true in the panel provider.
 
 Where to configure
@@ -221,7 +277,7 @@ Avatar storage
 - Adjust the disk and visibility in the config file according to your infrastructure.
 
 Quick access
-- Via direct URL: /admin/my-profile or /app/my-profile
+- Via direct URL: /admin/my-profile or /app/team/{id}/my-profile
 - To make it visible in the sidebar navigation, set shouldRegisterNavigation(true) in the respective Provider.
 
 Reference
