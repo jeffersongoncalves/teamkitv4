@@ -1,14 +1,14 @@
 <div class="filament-hidden">
 
-![FilaKit](https://raw.githubusercontent.com/jeffersongoncalves/filakitv4/4.x/art/jeffersongoncalves-filakitv4.png)
+![TeamKit](https://raw.githubusercontent.com/jeffersongoncalves/TeamKitv4/4.x/art/jeffersongoncalves-TeamKitv4.png)
 
 </div>
 
-# FilaKit Start Kit Filament 4.x and Laravel 12.x
+# TeamKit Start Kit Filament 4.x and Laravel 12.x
 
-## About FilaKit
+## About TeamKit
 
-FilaKit is a robust starter kit built on Laravel 12.x and Filament 4.x, designed to accelerate the development of modern
+TeamKit is a robust starter kit built on Laravel 12.x and Filament 4.x, designed to accelerate the development of modern
 web applications with a ready-to-use multi-panel structure.
 
 ## Features
@@ -19,7 +19,7 @@ web applications with a ready-to-use multi-panel structure.
     - Admin Panel (`/admin`) - For system administrators
     - App Panel (`/app`) - For authenticated application users
     - Public Panel (frontend interface) - For visitors
-- **Environment Configuration** - Centralized configuration through the `config/filakit.php` file
+- **Environment Configuration** - Centralized configuration through the `config/teamkit.php` file
 
 ## System Requirements
 
@@ -31,12 +31,12 @@ web applications with a ready-to-use multi-panel structure.
 
 Clone the repository
 ``` bash
-laravel new my-app --using=jeffersongoncalves/filakitv4 --database=mysql
+laravel new my-app --using=jeffersongoncalves/teamkitv4 --database=mysql
 ```
 
 ###  Easy Installation
 
-FilaKit can be easily installed using the following command:
+TeamKit can be easily installed using the following command:
 
 ```bash
 php install.php
@@ -83,7 +83,7 @@ php artisan serve
 
 Clone the repository
 ```bash
-laravel new my-app --using=jeffersongoncalves/filakitv4 --database=mysql
+laravel new my-app --using=jeffersongoncalves/teamkitv4 --database=mysql
 ```
 
 Move into the project directory
@@ -140,7 +140,7 @@ pnpm install
 
 ## Authentication Structure
 
-FilaKit comes pre-configured with a custom authentication system that supports different types of users:
+TeamKit comes pre-configured with a custom authentication system that supports different types of users:
 
 - `Admin` - For administrative panel access
 - `User` - For application panel access
@@ -167,16 +167,16 @@ Panels can be customized through their respective providers:
 - `app/Providers/Filament/AppPanelProvider.php`
 - `app/Providers/Filament/PublicPanelProvider.php`
 
-Alternatively, these settings are also consolidated in the `config/filakit.php` file for easier management.
+Alternatively, these settings are also consolidated in the `config/teamkit.php` file for easier management.
 
 ### Themes and Colors
 
 Each panel can have its own color scheme, which can be easily modified in the corresponding Provider files or in the
-`filakit.php` configuration file.
+`teamkit.php` configuration file.
 
 ### Configuration File
 
-The `config/filakit.php` file centralizes the configuration of the starter kit, including:
+The `config/teamkit.php` file centralizes the configuration of the starter kit, including:
 
 - Panel routes
 - Middleware for each panel
@@ -229,7 +229,7 @@ Reference
 
 ## Resources
 
-FilaKit includes support for:
+TeamKit includes support for:
 
 - User and admin management
 - Multi-guard authentication system
