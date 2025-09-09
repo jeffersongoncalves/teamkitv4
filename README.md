@@ -1,6 +1,6 @@
 <div class="filament-hidden">
 
-![TeamKit](https://raw.githubusercontent.com/jeffersongoncalves/TeamKitv4/4.x/art/jeffersongoncalves-TeamKitv4.png)
+![TeamKit](https://raw.githubusercontent.com/jeffersongoncalves/teamkitv4/4.x/art/jeffersongoncalves-teamkitv4.png)
 
 </div>
 
