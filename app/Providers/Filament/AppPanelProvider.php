@@ -42,8 +42,8 @@ class AppPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Green,
             ])
-            ->brandLogo(fn() => Vite::asset(config('teamkit.favicon.logo')))
-            ->brandLogoHeight(fn() => request()->is('app/login', 'app/password-reset/*') ? '121px' : '50px')
+            ->brandLogo(fn () => Vite::asset(config('teamkit.favicon.logo')))
+            ->brandLogoHeight(fn () => request()->is('app/login', 'app/password-reset/*') ? '121px' : '50px')
             ->viteTheme('resources/css/filament/app/theme.css')
             ->defaultThemeMode(config('teamkit.theme_mode', ThemeMode::Dark))
             ->discoverClusters(in: app_path('Filament/App/Clusters'), for: 'App\\Filament\\App\\Clusters')
@@ -94,15 +94,15 @@ class AppPanelProvider extends PanelProvider
             ])
             ->userMenuItems([
                 'profile' => Action::make('profile')
-                    ->label(fn(): string => __('My Profile'))
-                    ->url(fn(): string => EditProfilePage::getUrl())
+                    ->label(fn (): string => __('My Profile'))
+                    ->url(fn (): string => EditProfilePage::getUrl())
                     ->icon('heroicon-m-user-circle')
-                    ->visible(fn() => Filament::getTenant() !== null),
+                    ->visible(fn () => Filament::getTenant() !== null),
                 'invitations' => Action::make('invitations')
-                    ->label(fn(): string => __('Invitations'))
-                    ->url(fn(): string => TeamInvitationAccept::getUrl())
+                    ->label(fn (): string => __('Invitations'))
+                    ->url(fn (): string => TeamInvitationAccept::getUrl())
                     ->icon('heroicon-m-user-group')
-                    ->visible(fn() => Filament::getTenant() !== null),
+                    ->visible(fn () => Filament::getTenant() !== null),
             ])
             ->unsavedChangesAlerts()
             ->passwordReset()

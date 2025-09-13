@@ -17,6 +17,7 @@ class TeamInvitationAccept extends Page implements HasTable
     use InteractsWithTable;
 
     protected static bool $shouldRegisterNavigation = false;
+
     protected string $view = 'filament.app.pages.team-invitation-accept';
 
     public static function table(Table $table): Table
