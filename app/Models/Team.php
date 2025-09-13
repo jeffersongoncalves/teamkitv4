@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Observers\TeamObserver;
+use App\Policies\TeamPolicy;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -34,6 +38,8 @@ use Illuminate\Support\Collection;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(TeamObserver::class)]
+#[UsePolicy(TeamPolicy::class)]
 class Team extends Model
 {
     protected $fillable = [
@@ -54,9 +60,7 @@ class Team extends Model
 
     public function hasUserWithEmail(string $email): bool
     {
-        return $this->allUsers()->contains(function ($user) use ($email) {
-            return $user->email === $email;
-        });
+        return $this->allUsers()->contains(fn($user): bool => $user->email === $email);
     }
 
     public function allUsers(): Collection
@@ -72,9 +76,7 @@ class Team extends Model
     public function removeUser(User $user): void
     {
         if ($user->current_team_id === $this->id) {
-            $user->forceFill([
-                'current_team_id' => null,
-            ])->save();
+            $user->forceFill(['current_team_id' => null])->save();
         }
 
         $this->users()->detach($user);

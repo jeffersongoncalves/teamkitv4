@@ -6,6 +6,8 @@ use App\Filament\Admin\Resources\Users\Pages\CreateUser;
 use App\Filament\Admin\Resources\Users\Pages\EditUser;
 use App\Filament\Admin\Resources\Users\Pages\ListUsers;
 use App\Filament\Admin\Resources\Users\Pages\ViewUser;
+use App\Filament\Admin\Resources\Users\RelationManagers\OwnedTeamsRelationManager;
+use App\Filament\Admin\Resources\Users\RelationManagers\TeamsRelationManager;
 use App\Filament\Admin\Resources\Users\Schemas\UserForm;
 use App\Filament\Admin\Resources\Users\Schemas\UserInfolist;
 use App\Filament\Admin\Resources\Users\Tables\UsersTable;
@@ -16,7 +18,6 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Cache;
-
 use function __;
 
 class UserResource extends Resource
@@ -61,7 +62,7 @@ class UserResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return (string) Cache::rememberForever('users_count', fn () => User::query()->count());
+        return (string)Cache::rememberForever('users_count', fn() => User::query()->count());
     }
 
     public static function form(Schema $schema): Schema
@@ -82,7 +83,8 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            OwnedTeamsRelationManager::class,
+            TeamsRelationManager::class,
         ];
     }
 
