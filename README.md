@@ -171,6 +171,12 @@ User ↔ team association:
 - Members: the many‑to‑many relationship `User::teams()`/`Team::users()` uses the pivot represented by `App\Models\Membership`.
 - Access rules: `User::canAccessTenant($tenant)` validates whether the user belongs to the team (owner or member). The `User::getTenants()` method returns the list for the switcher.
 
+Team invitations (new):
+- Invite members from the Team profile page: add emails in the Invitations list. The system prevents duplicates if the email already belongs to the team (owner or member) and enforces uniqueness per team.
+- Pending invitations are listed for the invited user in the App panel user menu under “Invitations”. From there, the user can Accept (joins the team immediately) or Cancel (declines) each invite.
+- On acceptance, the user is attached to the team membership and the invitation is removed. Declining deletes the invitation without adding the user.
+- Admins can view/manage all invitations via the Admin panel resource “Team Invitations”.
+
 Team‑scoped data:
 - Middleware: `App\Http\Middleware\ApplyTenantScopes` is prepared for you to apply global scopes to your models, for example:
   ```php
@@ -184,10 +190,13 @@ Team‑scoped data:
 Relevant migrations:
 - `database/migrations/0001_01_01_000005_create_teams_table.php`
     - Creates the `teams` table with: `id`, `user_id` (indexed), `name`, and `personal_team` (boolean), plus timestamps.
+- `database/migrations/0001_01_01_000007_create_team_invitations_table.php`
+    - Creates the `team_invitations` table to store pending invitations per team and email.
 
 Filament pages related to Teams:
 - Registration: `App\Filament\App\Pages\Tenancy\RegisterTeam` (uses `Filament\Pages\Tenancy\RegisterTenant`).
 - Profile: `App\Filament\App\Pages\Tenancy\EditTeamProfile` (uses `Filament\Pages\Tenancy\EditTenantProfile`).
+- Invitations: `App\Filament\App\Pages\TeamInvitationAccept` — user menu → “Invitations” in the App panel.
 
 App panel configuration (summary):
 - `App\Providers\Filament\AppPanelProvider`
@@ -195,6 +204,7 @@ App panel configuration (summary):
     - `->tenantRoutePrefix('team')`
     - `->tenantRegistration(RegisterTeam::class)`
     - `->tenantProfile(EditTeamProfile::class)`
+    - Adds a user menu item “Invitations” linking to `TeamInvitationAccept::getUrl()` when a team is active
     - `->tenantMiddleware([ApplyTenantScopes::class], isPersistent: true)`
 
 Tips:
