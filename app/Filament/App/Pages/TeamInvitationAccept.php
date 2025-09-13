@@ -23,7 +23,7 @@ class TeamInvitationAccept extends Page implements HasTable
     {
         return $table
             ->recordTitleAttribute('email')
-            ->query(TeamInvitation::query()->where('email', auth()->user()->email))
+            ->query(TeamInvitation::query()->where('email', auth('web')->user()->email))
             ->columns([
                 TextColumn::make('team.name')
                     ->label(__('Team'))
