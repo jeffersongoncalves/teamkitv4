@@ -6,9 +6,7 @@ use App\Filament\Admin\Resources\TeamInvitations\Pages\ManageTeamInvitations;
 use App\Filament\Schemas\Components\AdditionalInformation;
 use App\Models\TeamInvitation;
 use BackedEnum;
-use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Forms\Components\Select;
@@ -64,7 +62,7 @@ class TeamInvitationResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return (string)Cache::rememberForever('team_invitations_count', fn() => TeamInvitation::query()->count());
+        return (string) Cache::rememberForever('team_invitations_count', fn () => TeamInvitation::query()->count());
     }
 
     public static function form(Schema $schema): Schema
