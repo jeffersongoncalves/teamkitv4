@@ -60,7 +60,7 @@ class TeamResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return (string)Cache::rememberForever('teams_count', fn() => Team::query()->count());
+        return (string) Cache::rememberForever('teams_count', fn () => Team::query()->count());
     }
 
     public static function form(Schema $schema): Schema

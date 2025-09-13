@@ -60,7 +60,7 @@ class Team extends Model
 
     public function hasUserWithEmail(string $email): bool
     {
-        return $this->allUsers()->contains(fn($user): bool => $user->email === $email);
+        return $this->allUsers()->contains(fn ($user): bool => $user->email === $email);
     }
 
     public function allUsers(): Collection

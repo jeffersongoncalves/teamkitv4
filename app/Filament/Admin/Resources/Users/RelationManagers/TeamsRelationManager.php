@@ -4,7 +4,6 @@ namespace App\Filament\Admin\Resources\Users\RelationManagers;
 
 use App\Filament\Admin\Resources\Teams\TeamResource;
 use Filament\Actions\AttachAction;
-use Filament\Actions\CreateAction;
 use Filament\Actions\DetachAction;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Table;
@@ -24,7 +23,7 @@ class TeamsRelationManager extends RelationManager
         return $table
             ->headerActions([
                 AttachAction::make()
-                    ->recordSelectOptionsQuery(fn(Builder $query) => $query->where('teams.user_id', '!=', $this->ownerRecord->id))
+                    ->recordSelectOptionsQuery(fn (Builder $query) => $query->where('teams.user_id', '!=', $this->ownerRecord->id))
                     ->preloadRecordSelect(),
             ])
             ->recordActions([

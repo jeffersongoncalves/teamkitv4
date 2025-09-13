@@ -40,6 +40,7 @@ class TeamPolicy
         if ($authenticatable instanceof User) {
             return $team->user_id === $authenticatable->id;
         }
+
         return true;
     }
 
