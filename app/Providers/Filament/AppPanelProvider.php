@@ -82,9 +82,9 @@ class AppPanelProvider extends PanelProvider
                     ->shouldRegisterNavigation(false)
                     ->shouldShowEmailForm()
                     ->shouldShowLocaleForm(options: [
-                        'pt_BR' => __('🇧🇷 Português'),
-                        'en' => __('🇺🇸 Inglês'),
-                        'es' => __('🇪🇸 Espanhol'),
+                        'pt_BR' => __('🇧🇷 Portuguese'),
+                        'en' => __('🇺🇸 English'),
+                        'es' => __('🇪🇸 Spanish'),
                     ])
                     ->shouldShowThemeColorForm()
                     ->shouldShowSanctumTokens()
