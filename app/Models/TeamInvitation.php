@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Observers\TeamInvitationObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -24,6 +26,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @mixin \Eloquent
  */
+#[ObservedBy(TeamInvitationObserver::class)]
 class TeamInvitation extends Model
 {
     protected $fillable = [

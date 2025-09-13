@@ -100,7 +100,6 @@ class AppPanelProvider extends PanelProvider
             ])
             ->unsavedChangesAlerts()
             ->passwordReset()
-            ->profile()
             ->databaseNotifications()
             ->databaseNotificationsPolling('30s')
             ->tenant(Team::class)

@@ -4,8 +4,10 @@ namespace App\Filament\Admin\Resources\TeamInvitations;
 
 use App\Filament\Admin\Resources\TeamInvitations\Pages\ManageTeamInvitations;
 use App\Filament\Schemas\Components\AdditionalInformation;
+use App\Models\Team;
 use App\Models\TeamInvitation;
 use BackedEnum;
+use Closure;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
@@ -14,6 +16,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
@@ -62,20 +65,32 @@ class TeamInvitationResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return (string) Cache::rememberForever('team_invitations_count', fn () => TeamInvitation::query()->count());
+        return (string)Cache::rememberForever('team_invitations_count', fn() => TeamInvitation::query()->count());
     }
 
     public static function form(Schema $schema): Schema
     {
         return $schema
+            ->columns(1)
             ->components([
                 Select::make('team_id')
                     ->relationship('team', 'name')
+                    ->live(onBlur: true)
                     ->required(),
                 TextInput::make('email')
                     ->label('Email address')
                     ->email()
-                    ->required(),
+                    ->unique('team_invitations', 'email', modifyRuleUsing: fn($rule, Get $get) => $rule->where('team_id', $get('team_id')))
+                    ->required()
+                    ->rules([fn(Get $get): Closure => function (string $attribute, mixed $value, Closure $fail) use ($get) {
+                        $team = Team::find($get('team_id'));
+                        if ($team->users()->where('email', $value)->exists()) {
+                            $fail(__('The email has already been taken.'));
+                        }
+                        if ($team->owner()->where('email', $value)->exists()) {
+                            $fail(__('The email has already been taken.'));
+                        }
+                    }]),
             ]);
     }
 
@@ -121,7 +136,6 @@ class TeamInvitationResource extends Resource
             ])
             ->recordActions([
                 ViewAction::make(),
-                EditAction::make(),
                 DeleteAction::make(),
             ]);
     }

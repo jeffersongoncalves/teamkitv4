@@ -2256,16 +2256,16 @@
         },
         {
             "name": "joaopaulolndev/filament-edit-profile",
-            "version": "v2.0.12",
+            "version": "v2.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joaopaulolndev/filament-edit-profile.git",
-                "reference": "6348400ea41a61a13582d71bd5ad6f4a1e722758"
+                "reference": "e632f33458d33cb3d9525af21d87dec14f6c3e06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joaopaulolndev/filament-edit-profile/zipball/6348400ea41a61a13582d71bd5ad6f4a1e722758",
-                "reference": "6348400ea41a61a13582d71bd5ad6f4a1e722758",
+                "url": "https://api.github.com/repos/joaopaulolndev/filament-edit-profile/zipball/e632f33458d33cb3d9525af21d87dec14f6c3e06",
+                "reference": "e632f33458d33cb3d9525af21d87dec14f6c3e06",
                 "shasum": ""
             },
             "require": {
@@ -2325,7 +2325,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-09-04T18:54:03+00:00"
+            "time": "2025-09-13T18:12:40+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",

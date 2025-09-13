@@ -76,7 +76,7 @@ class AdminPanelProvider extends PanelProvider
                 FilamentLogViewer::make()
                     ->navigationGroup(__('Settings')),
                 FilamentEditProfilePlugin::make()
-                    ->slug('my-profile')
+                    ->slug('profile')
                     ->setTitle(__('My Profile'))
                     ->setNavigationLabel(__('My Profile'))
                     ->setNavigationGroup(__('Group Profile'))
@@ -103,7 +103,6 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->unsavedChangesAlerts()
             ->passwordReset()
-            ->profile()
             ->databaseNotifications()
             ->databaseNotificationsPolling('30s');
     }
