@@ -7,6 +7,7 @@ use App\Filament\App\Pages\TeamInvitationAccept;
 use App\Filament\App\Pages\Tenancy\EditTeamProfile;
 use App\Filament\App\Pages\Tenancy\RegisterTeam;
 use App\Http\Middleware\ApplyTenantScopes;
+use App\Http\Middleware\CurrentTenant;
 use App\Models\Team;
 use Filament\Actions\Action;
 use Filament\Enums\ThemeMode;
@@ -114,6 +115,7 @@ class AppPanelProvider extends PanelProvider
             ->tenantProfile(EditTeamProfile::class)
             ->tenantMiddleware([
                 ApplyTenantScopes::class,
+                CurrentTenant::class,
             ], isPersistent: true);
     }
 }
