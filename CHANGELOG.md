@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.2.2 - 2025-11-14
+
+### What's Changed
+
+* build(deps-dev): bump autoprefixer from 10.4.21 to 10.4.22 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/30
+* build(deps): bump filament/filament from 4.2.0 to 4.2.1 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/31
+* build(deps): bump symfony/http-foundation from 7.3.6 to 7.3.7 by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/32
+* build(deps): bump the actions-deps group with 2 updates by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/33
+
+**Full Changelog**: https://github.com/jeffersongoncalves/teamkitv4/compare/4.2.0...4.2.2
+
 ## 4.2.0 - 2025-11-08
 
 ### What's Changed
