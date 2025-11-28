@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.2.3 - 2025-11-20
+
+### What's Changed
+
+* build(deps): bump achyutn/filament-log-viewer from 1.5.2 to 1.5.3 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/34
+* build(deps): bump the actions-deps group with 2 updates by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/35
+* build(deps-dev): bump barryvdh/laravel-debugbar from 3.16.0 to 3.16.1 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/36
+
+**Full Changelog**: https://github.com/jeffersongoncalves/teamkitv4/compare/4.2.2...4.2.3
+
 ## 4.2.2 - 2025-11-14
 
 ### What's Changed
