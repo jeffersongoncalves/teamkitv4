@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.3.0 - 2025-12-05
+
+### What's Changed
+
+* build(deps): bump the actions-deps group with 4 updates by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/39
+* build(deps-dev): bump vite from 7.2.4 to 7.2.6 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/40
+* build(deps): bump achyutn/filament-log-viewer from 1.5.3 to 1.6 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/41
+* build(deps): bump the actions-deps group with 3 updates by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/42
+* build(deps): bump the actions-deps group with 2 updates by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/43
+* build(deps): bump filament/filament from 4.2.4 to 4.3.0 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/44
+
+**Full Changelog**: https://github.com/jeffersongoncalves/teamkitv4/compare/4.2.4...4.3.0
+
 ## 4.2.4 - 2025-11-28
 
 ### What's Changed
