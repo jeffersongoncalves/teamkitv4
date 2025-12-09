@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.3.1 - 2025-12-09
+
+### What's Changed
+
+* Add `filament-icon-picker` package and update dependencies by @jeffersongoncalves in https://github.com/jeffersongoncalves/teamkitv4/pull/45
+* build(deps-dev): bump vite from 7.2.6 to 7.2.7 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/46
+* build(deps): bump wallacemartinss/filament-icon-picker from 1.1.5 to 1.4.4 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/47
+
+### New Contributors
+
+* @jeffersongoncalves made their first contribution in https://github.com/jeffersongoncalves/teamkitv4/pull/45
+
+**Full Changelog**: https://github.com/jeffersongoncalves/teamkitv4/compare/4.3.0...4.3.1
+
 ## 4.3.0 - 2025-12-05
 
 ### What's Changed
