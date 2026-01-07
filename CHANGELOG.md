@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.5.1 - 2026-01-07
+
+### What's Changed
+
+* build(deps-dev): bump vite from 7.3.0 to 7.3.1 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/62
+* build(deps): bump the actions-deps group with 3 updates by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/63
+* build(deps): bump filament/filament from 4.5.0 to 4.5.1 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/64
+
+**Full Changelog**: https://github.com/jeffersongoncalves/teamkitv4/compare/4.5.0...4.5.1
+
 ## 4.5.0 - 2026-01-07
 
 ### What's Changed
