@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.5.2 - 2026-01-09
+
+### What's Changed
+
+* build(deps): bump laravel/framework from 12.45.2 to 12.46.0 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/65
+
+**Full Changelog**: https://github.com/jeffersongoncalves/teamkitv4/compare/4.5.1...4.5.2
+
 ## 4.5.1 - 2026-01-07
 
 ### What's Changed
