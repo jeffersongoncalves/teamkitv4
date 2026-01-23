@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.6.0 - 2026-01-23
+
+### What's Changed
+
+* build(deps-dev): bump larastan/larastan from 3.8.1 to 3.9.0 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/67
+* build(deps-dev): bump laravel-vite-plugin from 2.0.1 to 2.1.0 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/68
+* build(deps): bump the actions-deps group with 2 updates by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/69
+
+**Full Changelog**: https://github.com/jeffersongoncalves/teamkitv4/compare/4.5.3...4.6.0
+
 ## 4.5.3 - 2026-01-16
 
 ### What's Changed
