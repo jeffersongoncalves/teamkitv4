@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.6.1 - 2026-01-28
+
+### What's Changed
+
+* build(deps-dev): bump barryvdh/laravel-debugbar from 3.16.3 to 3.16.4 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/70
+* build(deps-dev): bump axios from 1.13.2 to 1.13.3 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/71
+* build(deps-dev): bump barryvdh/laravel-debugbar from 3.16.4 to 4.0.2 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/72
+* build(deps-dev): bump barryvdh/laravel-debugbar from 4.0.2 to 4.0.3 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/73
+
+**Full Changelog**: https://github.com/jeffersongoncalves/teamkitv4/compare/4.6.0...4.6.1
+
 ## 4.6.0 - 2026-01-23
 
 ### What's Changed
