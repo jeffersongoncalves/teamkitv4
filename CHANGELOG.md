@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.6.3 - 2026-01-31
+
+### What's Changed
+
+* build(deps-dev): bump barryvdh/laravel-debugbar from 4.0.4 to 4.0.5 in the actions-deps group by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/76
+* build(deps): bump psy/psysh from 0.12.18 to 0.12.19 by @dependabot[bot] in https://github.com/jeffersongoncalves/teamkitv4/pull/77
+
+**Full Changelog**: https://github.com/jeffersongoncalves/teamkitv4/compare/4.6.2...4.6.3
+
 ## 4.6.2 - 2026-01-30
 
 ### What's Changed
